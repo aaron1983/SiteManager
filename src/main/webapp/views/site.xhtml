@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Siteco Management System</title>
+</h:head>
+<h:body>
+    <h:form>
+        <p:growl id="growl" showDetail="true" sticky="true"/>
+
+        <div class="ui-grid ui-grid-responsive">
+            <p:tabMenu activeIndex="#{param.i}">
+                <p:menuitem value="Home" outcome="/index.xhtml" icon="ui-icon-star">
+                    <f:param name="i" value="0"/>
+                </p:menuitem>
+
+            </p:tabMenu>
+
+            <ui:composition template="/layout/template.xhtml">
+                <ui:define name="content">
+                    <p:tabView id="tabView">
+                        <p:tab id="site_add" title="New Site">
+                            <p:panel id="add" header="General Information">
+                                <p:growl id="siteMessages" showSummary="true" severity="info"/>
+                                <h:panelGrid id="gridId" columns="2" cellpadding="2">
+                                    <p:outputLabel for="siteId" value="Id:" />
+                                    <p:inputText id="siteId" required="true" size="10" />
+                                    <p:outputLabel for="name" value="Name:" />
+                                    <p:inputText id="name" required="true" size="40" />
+                                    <p:outputLabel for="province" value="Province: "/>
+                                    <p:selectOneMenu id="province" converter="#{provinceConverter}"  value="#{provinceMBean.province}" immediate="true" style="width:100px">
+                                        <p:ajax event="change" />
+                                        <f:selectItem itemValue="#{null}" itemLabel="--Select--" noSelectionOption="true" />
+                                        <f:selectItems value="#{provinceMBean.provinces}" var="province"
+                                                       itemLabel="#{province.name}"/>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel for="address" value="Adress:" />
+                                    <p:inputTextarea id="address" required="true" rows="3" cols="40" />
+                                    <p:outputLabel for="landOwner" value="Land Owner:"  />
+                                    <p:inputText id="landOwner" required="true" size="40" />
+                                    <p:outputLabel for="landLord" value="Land Lord:" />
+                                    <p:inputText id="landLord" required="true" size="40" />
+                                    <p:outputLabel for="longitude" value="Longitude:" />
+                                    <p:inputNumber id="longitude" required="true" />
+                                    <p:outputLabel for="latitude" value="Latitude:" />
+                                    <p:inputNumber id="latitude" required="true" />
+                                    <p:outputLabel for="altitude" value="Altitude:" />
+                                    <p:inputNumber id="altitude" required="true" />
+                                    <p:outputLabel for="dateAcquired" value="Date Acquired:" />
+                                    <p:calendar id="dateAcquired" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+                                    <p:outputLabel for="accessRules" value="Access Rules:" />
+                                    <p:inputTextarea id="accessRules" rows="3" cols="40" />
+                                </h:panelGrid>
+                            <p:panel id="add_compound" header="Compound Information">
+                                <h:panelGrid id="cgridId" columns="2" cellpadding="2">
+                                    <p:outputLabel for="siteType" value="Site Type: "/>
+                                    <p:selectOneMenu id="siteType" converter="#{siteTypeConverter}"  value="#{siteTypeMBean.siteType}" immediate="true" style="width:100px">
+                                        <p:ajax event="change" />
+                                        <f:selectItem itemValue="#{null}" itemLabel="Select type" noSelectionOption="true" />
+                                        <f:selectItems value="#{siteTypeMBean.siteTypes}" var="siteType"
+                                                       itemLabel="#{siteType.name}"/>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel for="siteSize" value="Site Size:" />
+                                    <p:inputNumber id="siteSize"/>
+                                    <p:outputLabel for="tenants" value="Tenants:" />
+                                    <p:inputNumber id="tenants"/>
+                                    <p:outputLabel for="spaceForAdditionalTenants" value="Space for + Tenants:" />
+                                    <p:inputNumber id="spaceForAdditionalTenants"/>
+                                    <p:outputLabel for="spaceForAdditionalTenantsEquipment" value="Space for + Tenants Equipements:" />
+                                    <p:inputNumber id="paceForAdditionalTenantsEquipment"/>
+                                    <p:outputLabel for="name" value="Name:" />
+                                    <p:inputText id="fence_type" required="true" size="40" />
+                                    <p:outputLabel for="province" value="Province: "/>
+                                    <p:selectOneMenu id="province" converter="#{provinceConverter}"  value="#{provinceMBean.province}" immediate="true" style="width:100px">
+                                        <p:ajax event="change" />
+                                        <f:selectItem itemValue="#{null}" itemLabel="--Select--" noSelectionOption="true" />
+                                        <f:selectItems value="#{provinceMBean.provinces}" var="province"
+                                                       itemLabel="#{province.name}"/>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel for="address" value="Adress:" />
+                                    <p:inputTextarea id="address" required="true" rows="3" cols="40" />
+                                    <p:outputLabel for="landOwner" value="Land Owner:"  />
+                                    <p:inputText id="landOwner" required="true" size="40" />
+                                    <p:outputLabel for="landLord" value="Land Lord:" />
+                                    <p:inputText id="landLord" required="true" size="40" />
+                                    <p:outputLabel for="longitude" value="Longitude:" />
+                                    <p:inputNumber id="longitude" required="true" />
+                                    <p:outputLabel for="latitude" value="Latitude:" />
+                                    <p:inputNumber id="latitude" required="true" />
+                                    <p:outputLabel for="altitude" value="Altitude:" />
+                                    <p:inputNumber id="altitude" required="true" />
+                                    <p:outputLabel for="dateAcquired" value="Date Acquired:" />
+                                    <p:calendar id="dateAcquired" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+                                    <p:outputLabel for="accessRules" value="Access Rules:" />
+                                    <p:inputTextarea id="accessRules" rows="3" cols="40" />
+                                </h:panelGrid>
+                                <p:separator />
+
+                                <p:commandButton value="save" update="siteMessages" icon="ui-icon-check" />
+                            </p:panel>
+                        </p:tab>
+                        <p:tab id="site_infos" title="Site details">
+                        </p:tab>
+                    </p:tabView>
+                </ui:define>
+            </ui:composition>
+        </div>
+    </h:form>
+</h:body>
+</html>

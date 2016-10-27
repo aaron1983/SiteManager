@@ -1,0 +1,70 @@
+
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+	<h:form>
+
+		<p:panelMenu>
+			<p:submenu label="Dashboard" expanded="true"  icon="ui-icon-home">
+                <p:menuitem value="Home"  icon="ui-icon-home" utcome="/index.xhtml"/>
+           </p:submenu>
+            <p:submenu label="General Information" icon="ui-icon-document">
+				<p:menuitem value="Site information"  icon="ui-icon-document" outcome="/views/site.xhtml" />
+				<p:menuitem value="Compound Information"  icon="ui-icon-document" />
+				<p:menuitem value="Tower information"  icon="ui-icon-document" />
+				<p:menuitem value="Tower details "  icon="ui-icon-document" />
+			</p:submenu>
+
+			<p:submenu label="Equipments details" icon="ui-icon-document">
+				<p:menuitem value="Shelter details"  icon="ui-icon-document" />
+				<p:menuitem value="Access Radio details" icon="ui-icon-document" />
+				<p:menuitem value="Transmission details" icon="ui-icon-document" />
+			</p:submenu>
+
+			<p:submenu label="System Details" icon="ui-icon-document">
+				<p:menuitem value="Site Monitoring"  icon="ui-icon-document" />
+                <p:menuitem value="Fire Suppression"  icon="ui-icon-document" />
+                <p:menuitem value="AC Power"  icon="ui-icon-document" />
+                <p:menuitem value="Generator &amp; ATS"  icon="ui-icon-document" />
+                <p:menuitem value="Fuel Storage Facilities"  icon="ui-icon-document" />
+                <p:menuitem value="DC Power"  icon="ui-icon-document" />
+                <p:menuitem value="Battery System "  icon="ui-icon-document" />
+                <p:menuitem value="PV Power"  icon="ui-icon-document" />
+                <p:menuitem value="Earthing System"  icon="ui-icon-document" />
+			</p:submenu>
+
+			<p:submenu label="Security" icon="ui-icon-document">
+				<p:menuitem value="Security Facilities" icon="ui-icon-document"/>
+                <p:menuitem value="Statutory Permits" icon="ui-icon-document"/>
+			</p:submenu>
+            <p:submenu label="Documentation" icon="ui-icon-document">
+                <p:menuitem value="Security Facilities" icon="ui-icon-document"/>
+                <p:menuitem value="Statutory Permits" icon="ui-icon-document"/>
+            </p:submenu>
+			<p:submenu label="Administration" icon="ui-icon-document">
+				<p:menuitem value="Users" icon="ui-icon-document"/>
+				<p:menuitem value="Rights" icon="ui-icon-document"/>
+			</p:submenu>
+            <p:submenu label="Finance" icon="ui-icon-document">
+                <p:menuitem value="Users" icon="ui-icon-document"/>
+                <p:menuitem value="Rights" icon="ui-icon-document"/>
+            </p:submenu>
+            <p:submenu label="Legal" icon="ui-icon-document">
+                <p:menuitem value="Users" icon="ui-icon-document"/>
+                <p:menuitem value="Rights" icon="ui-icon-document"/>
+            </p:submenu>
+            <p:submenu label="Human Resources" icon="ui-icon-document">
+                <p:menuitem value="Users" icon="ui-icon-document"/>
+                <p:menuitem value="Rights" icon="ui-icon-document"/>
+            </p:submenu>
+		</p:panelMenu>
+
+	</h:form>
+</ui:composition>
+
+
