@@ -15,6 +15,7 @@ public class Antenna implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @ManyToOne
     private Tower tower;
     @ManyToOne(fetch = FetchType.EAGER)
     private AntennaType type;
