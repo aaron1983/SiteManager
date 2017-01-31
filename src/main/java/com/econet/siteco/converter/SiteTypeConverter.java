@@ -5,27 +5,27 @@ import com.econet.siteco.service.SiteTypeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  * Created by Aaron on 10/19/2016.
  */
-@ManagedBean
+@Named
 @RequestScoped
 public class SiteTypeConverter implements Converter {
 
-    @ManagedProperty(value = "#{siteTypeService}")
-    private SiteTypeService siteTypeService;
     private static final Logger logger = LoggerFactory.getLogger(SiteTypeConverter.class);
+    @Inject
+    private SiteTypeService siteTypeService;
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-      return siteTypeService.getSiteTypeById(Integer.parseInt(value));
+        return siteTypeService.getById(Integer.parseInt(value));
     }
 
     @Override

@@ -2,18 +2,15 @@ package com.econet.siteco.converter;
 
 import com.econet.siteco.model.Province;
 import com.econet.siteco.service.ProvinceService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.ConverterException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Created by Aaron on 10/19/2016.
@@ -22,14 +19,14 @@ import org.slf4j.LoggerFactory;
 @RequestScoped
 public class ProvinceConverter implements Converter {
 
+    private static final Logger logger = LoggerFactory.getLogger(ProvinceConverter.class);
     @ManagedProperty(value = "#{provinceService}")
     private ProvinceService provinceService;
-    private static final Logger logger = LoggerFactory.getLogger(ProvinceConverter.class);
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         logger.info("Value:{}",value);
-        return provinceService.getProvinceById(Integer.parseInt(value));
+        return provinceService.getById(Integer.parseInt(value));
     }
 
     @Override

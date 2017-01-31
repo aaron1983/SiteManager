@@ -2,8 +2,5 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/layout/footer.xhtml" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/layout/header.xhtml" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/layout/menu.xhtml" charset="windows-1252" />
   </component>
 </project>

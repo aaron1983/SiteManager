@@ -2,6 +2,7 @@ package com.econet.siteco.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.util.Date;
 
 /**
@@ -11,26 +12,23 @@ import java.util.Date;
 @Table(name = "sites")
 public class Site {
     @Id
-    private Integer id;
-    @NotNull
+    @Column(name = "site_id")
+    private String id;
+    @NotNull(message = "Please provide site name.")
     @Column(name="site_name",unique = true,nullable = false)
     private String name;
-    @NotNull
+    @ManyToOne
+    private Commune commune;
     @ManyToOne
     @JoinColumn(name="province_id")
     private Province province;
-    @NotNull
     private String address;
-    @NotNull
     private String landOwner;
-    @NotNull
     private String landLord;
-    @NotNull
     private Double longitude;
-    @NotNull
     private Double latitude;
-    @NotNull
     private Double altitude;
+    @Past(message = "Date acquired must be in the past.")
     @Temporal(TemporalType.DATE)
     @Column(name="dateAcquired",unique = true,nullable = false)
     private Date dateAcquired;
@@ -39,11 +37,11 @@ public class Site {
     private String accessRules;
 
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

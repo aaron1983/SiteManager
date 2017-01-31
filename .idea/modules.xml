@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/siteco.iml" filepath="$PROJECT_DIR$/siteco.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EcoTower.iml" filepath="$PROJECT_DIR$/EcoTower.iml" />
     </modules>
   </component>
 </project>

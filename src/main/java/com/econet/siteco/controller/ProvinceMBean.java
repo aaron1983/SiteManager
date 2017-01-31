@@ -1,34 +1,31 @@
 package com.econet.siteco.controller;
 
 import com.econet.siteco.model.Province;
-import com.econet.siteco.repository.ProvinceRepository;
 import com.econet.siteco.service.ProvinceService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Aaron on 10/18/2016.
  */
-@ManagedBean
-@ViewScoped
+@Named
+@RequestScoped
 public class ProvinceMBean implements Serializable {
 
-    @ManagedProperty(value = "#{provinceService}")
+    @Inject
     private ProvinceService provinceService;
 
     private Province province;
     private List<Province> provinces;
 
     @PostConstruct
-    public void init(){
-     provinces=provinceService.getAllProvinces();
+    public void initialize() {
+        provinces = provinceService.findAll();
     }
 
     public ProvinceService getProvinceService() {

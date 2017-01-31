@@ -9,9 +9,13 @@ import java.util.List;
  */
 public interface SiteService {
 
-    Site getSiteById(int id);
-    Site getSiteByName(String name);
-    List<Site> getAllSites();
-    Site saveSite(Site site);
-    Site updateSite(Site site);
+    Site getById(Integer id);
+
+    Site getByName(String name);
+
+    List<Site> findAll();
+
+    Site save(Site site);
+
+    Site update(Site site);
 }

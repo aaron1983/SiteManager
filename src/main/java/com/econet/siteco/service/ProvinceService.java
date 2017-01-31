@@ -9,9 +9,13 @@ import java.util.List;
  */
 public interface ProvinceService {
 
-    Province getProvinceById(int id);
-    Province getProvinceByName(String name);
-    List<Province> getAllProvinces();
-    Province saveProvince(Province province);
-    Province updateProvince(Province province);
+    Province getById(int id);
+
+    Province getByName(String name);
+
+    List<Province> findAll();
+
+    Province save(Province province);
+
+    Province update(Province province);
 }

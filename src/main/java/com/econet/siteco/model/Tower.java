@@ -1,6 +1,10 @@
 package com.econet.siteco.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Past;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Aaron on 10/10/2016.
@@ -20,14 +24,26 @@ public class Tower {
     private String subcontractor;
     private Double height;
     private Integer legsIfLatice;
+    @Column(name = "type_of_structure")
+    private String typeOfStructure;
     private String manufacturer;
     private String serialNumber;
-    private Boolean TowerEarthed;
-    private String towerEarthingConditions;
+    @Past(message = "Date of installation must be in past.")
+    private Date dateOfInstallation;//Audit
+    private Boolean earthed;
+    private String status; // active/offlines
+    private String earthingConditions;
     private String siteEarthingConditions;
     private Integer navigationLights;
-    private String additionalLoadingAllowed;
-    private String towerFailureRisk;
+    private Boolean canTakeAdditionalLoading;
+    private Boolean towerFailureRisk;
+    @ManyToOne  //Double Tower possibility
+    private Site site;
+    private List<? extends TowerElement> elements;
+
+    public Tower() {
+        elements = new ArrayList<>();
+    }
 
     public Integer getId() {
         return id;
@@ -117,22 +133,6 @@ public class Tower {
         this.serialNumber = serialNumber;
     }
 
-    public Boolean getTowerEarthed() {
-        return TowerEarthed;
-    }
-
-    public void setTowerEarthed(Boolean towerEarthed) {
-        TowerEarthed = towerEarthed;
-    }
-
-    public String getTowerEarthingConditions() {
-        return towerEarthingConditions;
-    }
-
-    public void setTowerEarthingConditions(String towerEarthingConditions) {
-        this.towerEarthingConditions = towerEarthingConditions;
-    }
-
     public String getSiteEarthingConditions() {
         return siteEarthingConditions;
     }
@@ -149,19 +149,75 @@ public class Tower {
         this.navigationLights = navigationLights;
     }
 
-    public String getAdditionalLoadingAllowed() {
-        return additionalLoadingAllowed;
-    }
-
-    public void setAdditionalLoadingAllowed(String additionalLoadingAllowed) {
-        this.additionalLoadingAllowed = additionalLoadingAllowed;
-    }
-
-    public String getTowerFailureRisk() {
+    public Boolean getTowerFailureRisk() {
         return towerFailureRisk;
     }
 
-    public void setTowerFailureRisk(String towerFailureRisk) {
+    public void setTowerFailureRisk(Boolean towerFailureRisk) {
         this.towerFailureRisk = towerFailureRisk;
+    }
+
+    public String getTypeOfStructure() {
+        return typeOfStructure;
+    }
+
+    public void setTypeOfStructure(String typeOfStructure) {
+        this.typeOfStructure = typeOfStructure;
+    }
+
+    public Date getDateOfInstallation() {
+        return dateOfInstallation;
+    }
+
+    public void setDateOfInstallation(Date dateOfInstallation) {
+        this.dateOfInstallation = dateOfInstallation;
+    }
+
+    public Boolean getEarthed() {
+        return earthed;
+    }
+
+    public void setEarthed(Boolean earthed) {
+        this.earthed = earthed;
+    }
+
+    public String getEarthingConditions() {
+        return earthingConditions;
+    }
+
+    public void setEarthingConditions(String earthingConditions) {
+        this.earthingConditions = earthingConditions;
+    }
+
+    public Boolean getCanTakeAdditionalLoading() {
+        return canTakeAdditionalLoading;
+    }
+
+    public void setCanTakeAdditionalLoading(Boolean canTakeAdditionalLoading) {
+        this.canTakeAdditionalLoading = canTakeAdditionalLoading;
+    }
+
+    public Site getSite() {
+        return site;
+    }
+
+    public void setSite(Site site) {
+        this.site = site;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public List<? extends TowerElement> getElements() {
+        return elements;
+    }
+
+    public void setElements(List<? extends TowerElement> elements) {
+        this.elements = elements;
     }
 }

@@ -9,9 +9,13 @@ import java.util.List;
  */
 public interface SiteTypeService {
 
-    SiteType getSiteTypeById(int id);
-    SiteType getSiteTypeByName(String name);
-    List<SiteType> getAllSiteTypes();
-    SiteType saveSite(SiteType siteType);
-    SiteType updateSiteType(SiteType siteType);
+    SiteType getById(int id);
+
+    SiteType getByName(String name);
+
+    List<SiteType> findAll();
+
+    SiteType save(SiteType siteType);
+
+    SiteType update(SiteType siteType);
 }

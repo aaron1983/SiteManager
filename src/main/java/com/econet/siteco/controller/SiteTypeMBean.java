@@ -3,11 +3,11 @@ package com.econet.siteco.controller;
 import com.econet.siteco.model.SiteType;
 import com.econet.siteco.service.SiteTypeService;
 import org.apache.log4j.Logger;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedProperty;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -15,23 +15,25 @@ import java.util.List;
 /**
  * Created by Aaron on 10/19/2016.
  */
-@Named(value = "siteTypeManagedBean")
+@Named
 @Component
-@Scope("session")
+@RequestScoped
 public class SiteTypeMBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @ManagedProperty(value = "#{siteService}")
+    private static final Logger logger = Logger.getLogger(SiteTypeMBean.class);
+    @Inject
     private SiteTypeService siteTypeService;
-
     private SiteType siteType;
     private List<SiteType> siteTypes;
-    private static final Logger logger = Logger.getLogger(SiteTypeMBean.class);
+
+    public SiteTypeMBean() {
+    }
 
     @PostConstruct
-    public void init() {
+    public void initialize() {
 
-        siteTypes=siteTypeService.getAllSiteTypes();
+        siteTypes = siteTypeService.findAll();
     }
 
     public SiteTypeService getSiteTypeService() {
@@ -56,8 +58,5 @@ public class SiteTypeMBean implements Serializable {
 
     public void setSiteTypes(List<SiteType> siteTypes) {
         this.siteTypes = siteTypes;
-    }
-
-    public SiteTypeMBean() {
     }
 }

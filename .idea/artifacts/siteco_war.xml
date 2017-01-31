@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="siteco:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="siteco.war">
-      <element id="artifact" artifact-name="siteco:war exploded" />
-    </root>
-  </artifact>
-</component>

@@ -22,27 +22,27 @@ public class ProvinceServiceImpl implements ProvinceService , Serializable {
     private ProvinceRepository provinceRepository;
 
     @Override
-    public Province getProvinceById(int id) {
+    public Province getById(int id) {
         return provinceRepository.findOne(id);
     }
 
     @Override
-    public Province getProvinceByName(String name) {
+    public Province getByName(String name) {
         return provinceRepository.findByName(name);
     }
 
     @Override
-    public List<Province> getAllProvinces() {
+    public List<Province> findAll() {
         return provinceRepository.findAll();
     }
 
     @Override
-    public Province saveProvince(Province province) {
+    public Province save(Province province) {
         return provinceRepository.save(province);
     }
 
     @Override
-    public Province updateProvince(Province province) {
+    public Province update(Province province) {
         return null;
     }
 }

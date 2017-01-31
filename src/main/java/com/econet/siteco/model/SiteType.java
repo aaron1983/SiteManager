@@ -12,7 +12,7 @@ public class SiteType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @NotNull
+    @NotNull(message = "Please provide site type name.")
     @Column(name="type_name")
     private String name;
     private String description;
@@ -31,5 +31,13 @@ public class SiteType {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

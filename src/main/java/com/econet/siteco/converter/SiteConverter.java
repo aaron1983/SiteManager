@@ -19,14 +19,14 @@ import javax.faces.convert.Converter;
 @RequestScoped
 public class SiteConverter implements Converter {
 
+    private static final Logger logger = LoggerFactory.getLogger(SiteConverter.class);
     @ManagedProperty(value = "#{siteService}")
     private SiteService siteService;
-    private static final Logger logger = LoggerFactory.getLogger(SiteConverter.class);
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         logger.info("Value:{}",value);
-        return siteService.getSiteById(Integer.parseInt(value));
+        return siteService.getById(Integer.parseInt(value));
     }
 
     @Override
